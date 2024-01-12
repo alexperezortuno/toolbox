@@ -18,15 +18,13 @@ build-version:
 
 .PHONY: build-linux
 build-linux:
-	GOARCH=amd64 \
-	GOOS=linux \
-	go build -ldflags "-X main.Version=${VERSION}" -a -o ${BUILD_DIR}/${BINARY}-${VERSION} main.go
+	set CGO_ENABLED=0 && \
+	${GO_LOCATION}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${LINUX} main.go
 
 .PHONY: build-darwin
 build-darwin:
-	GOARCH=amd64 \
-	GOOS=darwin \
-	go build -ldflags "-X main.Version=${VERSION}" -a -o ${BUILD_DIR}/${BINARY}-${VERSION} main.go
+	set CGO_ENABLED=0 && \
+	${GO_LOCATION}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${DARWIN} main.go
 
 .PHONY: build-windows
 build-windows:
