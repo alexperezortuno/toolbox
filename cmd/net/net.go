@@ -13,18 +13,14 @@ var NetCmd = &cobra.Command{
 	Short: "Net command toolbox",
 	Long:  `Net command toolbox`,
 	Run: func(cmd *cobra.Command, args []string) {
-		cmd.Help()
+		err := cmd.Help()
+		if err != nil {
+			return
+		}
 	},
 }
 
 func init() {
 	// Here you will define your flags and configuration settings.
-	NetCmd.AddCommand(pingCmd)
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// netCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// netCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	NetCmd.AddCommand(PingCmd)
 }

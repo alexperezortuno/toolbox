@@ -2,7 +2,7 @@ EXECUTABLE=toolbox
 VERSION=0.0.1
 BUILD_DIR=./build
 WINDOWS=$(EXECUTABLE)_windows_amd64_$(VERSION).exe
-LINUX=$(EXECUTABLE)_linux_amd64_$(VERSION)
+LINUX=$(EXECUMABLE)_linux_amd64_$(VERSION)
 DARWIN=$(EXECUTABLE)_darwin_amd64_$(VERSION)
 
 .PHONY: default

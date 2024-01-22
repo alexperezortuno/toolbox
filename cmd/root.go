@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/alexperezortuno/toolbox/cmd/docker"
 	"github.com/alexperezortuno/toolbox/cmd/net"
 	"github.com/spf13/cobra"
 	"os"
@@ -32,6 +33,7 @@ func Execute() {
 
 func AddSubCommand() {
 	rootCmd.AddCommand(net.NetCmd)
+	rootCmd.AddCommand(docker.DockerCmd)
 }
 
 func init() {

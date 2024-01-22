@@ -35,7 +35,7 @@ func ping(domain string) (string, error) {
 }
 
 // pingCmd represents the ping command
-var pingCmd = &cobra.Command{
+var PingCmd = &cobra.Command{
 	Use:   "ping",
 	Short: "Ping a host",
 	Long:  `This command will ping a host and return the result`,
@@ -49,9 +49,9 @@ var pingCmd = &cobra.Command{
 }
 
 func init() {
-	pingCmd.Flags().StringVarP(&urlPath, "url", "u", "", "URL to ping")
+	PingCmd.Flags().StringVarP(&urlPath, "url", "u", "", "URL to ping")
 
-	if err := pingCmd.MarkFlagRequired("url"); err != nil {
+	if err := PingCmd.MarkFlagRequired("url"); err != nil {
 		fmt.Println(err)
 		panic(err)
 	}
