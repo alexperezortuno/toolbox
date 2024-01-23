@@ -201,7 +201,7 @@ toolbox docker image remove -t latest`,
 			i, _, err := prompt.Run()
 
 			if err != nil {
-				fmt.Printf("Prompt failed %v\n", err)
+				fmt.Printf(common.PromptFailed, err)
 				return
 			}
 
