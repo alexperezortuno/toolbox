@@ -16,6 +16,7 @@ type volume struct {
 var VolumeCmd = &cobra.Command{
 	Use:   "volume",
 	Short: "Commands for volumes",
+	Long:  "This command is used for managing volumes",
 	Run: func(cmd *cobra.Command, args []string) {
 		err := cmd.Help()
 		if err != nil {

@@ -37,4 +37,5 @@ deps:
 
 .PHONY: test
 test:
-	go test -v ./tests > report.txt
+	set CGO_ENABLED=0 && \
+	${GOROOT}/bin/go test -v ./tests > report.txt

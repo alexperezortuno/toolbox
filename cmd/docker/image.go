@@ -28,6 +28,7 @@ type image struct {
 var ImageCmd = &cobra.Command{
 	Use:   "image",
 	Short: "Commands for images",
+	Long:  `This command is used for managing images`,
 	Run: func(cmd *cobra.Command, args []string) {
 		err := cmd.Help()
 		if err != nil {

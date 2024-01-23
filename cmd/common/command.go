@@ -12,8 +12,30 @@ const LineStr string = "\n%s\n"
 const CmdFailed string = "command failed with %s\n"
 const PromptFailed string = "Prompt failed %v\n"
 
+type Cmd interface {
+	CombinedOutput() ([]byte, error)
+}
+
+type RealCmd struct {
+	*exec.Cmd
+}
+
+type CommandCreatorFunc func(name string, arg ...string) Cmd
+
+func (c *RealCmd) CombinedOutput() ([]byte, error) {
+	return c.Cmd.CombinedOutput()
+}
+
+var CommandCreator CommandCreatorFunc = func(name string, arg ...string) Cmd {
+	return &RealCmd{exec.Command(name, arg...)}
+}
+
 func LaunchCommand(command []string) (string, error) {
-	c := exec.Command(command[0], command[1:]...)
+	if len(command) == 0 {
+		return "", fmt.Errorf("command cannot be empty")
+	}
+
+	c := CommandCreator(command[0], command[1:]...)
 
 	out, err := c.CombinedOutput()
 	if err != nil {
