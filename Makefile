@@ -2,7 +2,7 @@ EXECUTABLE=toolbox
 VERSION=0.0.1
 BUILD_DIR=./build
 WINDOWS=$(EXECUTABLE)_windows_amd64_$(VERSION).exe
-LINUX=$(EXECUMABLE)_linux_amd64_$(VERSION)
+LINUX=$(EXECUTABLE)_linux_amd64_$(VERSION)
 DARWIN=$(EXECUTABLE)_darwin_amd64_$(VERSION)
 
 .PHONY: default
@@ -19,17 +19,17 @@ build-version:
 .PHONY: build-linux
 build-linux:
 	set CGO_ENABLED=0 && \
-	${GO_LOCATION}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${LINUX} main.go
+	${GOROOT}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${LINUX} main.go
 
 .PHONY: build-darwin
 build-darwin:
 	set CGO_ENABLED=0 && \
-	${GO_LOCATION}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${DARWIN} main.go
+	${GOROOT}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${DARWIN} main.go
 
 .PHONY: build-windows
 build-windows:
 	set CGO_ENABLED=0 && \
-	${GO_LOCATION}\bin\go.exe build -ldflags "-s -w -X main.Version=${VERSION}" -a -o .\build\${WINDOWS} .\main.go
+	${GOROOT}\bin\go.exe build -ldflags "-s -w -X main.Version=${VERSION}" -a -o .\build\${WINDOWS} .\main.go
 
 .PHONY: deps
 deps:

@@ -4,7 +4,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// dockerCmd represents the docker command
 var DockerCmd = &cobra.Command{
 	Use:   "docker",
 	Short: "A brief description of your command",
@@ -24,4 +23,5 @@ to quickly create a Cobra application.`,
 
 func init() {
 	DockerCmd.AddCommand(ImageCmd)
+	DockerCmd.AddCommand(VolumeCmd)
 }
