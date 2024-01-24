@@ -23,23 +23,19 @@ jobs:
 
             -   name: Get the version
                 id: get_version
-                run: echo ::set-output name=VERSION::$(git describe --tags --abbrev=0)
+                run: echo "VERSION=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
 
             -   name: Build
-                run: |
-                    VERSION=${{ steps.get_version.outputs.VERSION}}
-                    go build -ldflags="-X main.version=$VERSION" -o toolbox-$VERSION -v ./...
+                run: go build -ldflags="-X main.version=$VERSION" -o toolbox-$VERSION -v ./...
 
             -   name: Test
                 run: go test -v ./...
 
             -   name: Archive binary
-                run: |
-                    VERSION=${{ steps.get_version.outputs.VERSION }}
-                    tar -czvf toolbox-$VERSION.tar.gz toolbox-$VERSION
+                run: tar -czvf toolbox-$VERSION.tar.gz toolbox-$VERSION
 
             -   name: Upload binary as artifact
                 uses: actions/upload-artifact@v2
                 with:
-                    name: toolbox-${{ steps.get_version.outputs.VERSION }}
-                    path: toolbox-${{ steps.get_version.outputs.VERSION }}.tar.gz
+                    name: toolbox-$VERSION
+                    path: toolbox-$VERSION.tar.gz
