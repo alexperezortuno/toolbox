@@ -37,5 +37,5 @@ jobs:
             -   name: Upload binary as artifact
                 uses: actions/upload-artifact@v2
                 with:
-                    name: ./build/toolbox-$VERSION
+                    name: toolbox-$VERSION
                     path: ./build/toolbox-$VERSION.tar.gz
