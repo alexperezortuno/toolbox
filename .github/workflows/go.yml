@@ -32,16 +32,16 @@ jobs:
                   echo $VERSION
 
             -   name: Build
-                run: go build -ldflags="-s -w -X  main.version=$VERSION" -a -o ./build/toolbox-$VERSION -v ./main.go
+                run: go build -ldflags="-s -w -X  main.version=$VERSION" -a -o build/toolbox-$VERSION -v ./main.go
 
             -   name: Test
                 run: go test -v ./...
 
             -   name: Archive binary
-                run: tar -czvf ./build/toolbox-$VERSION.tar.gz ./build/toolbox-$VERSION
+                run: tar -czvf build/toolbox-$VERSION.tar.gz build/toolbox-$VERSION
 
             -   name: Upload binary as artifact
                 uses: actions/upload-artifact@v2
                 with:
                     name: toolbox-$VERSION
-                    path: toolbox-$VERSION.tar.gz
+                    path: build/toolbox-$VERSION.tar.gz
