@@ -23,16 +23,15 @@ jobs:
             -   name: Get dependencies
                 run: go get -v -t -d ./...
 
-            -   name: GitHub Tag Name example
-                run: |
-                    echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-                    echo "Tag name from github.ref_name: ${{  github.ref_name }}"
-
             -   name: Get the version
                 id: get_version
                 run: |
                   echo "VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo '0.0.0')" >> $GITHUB_ENV
-                  echo $VERSION
+
+            -   name: GitHub Tag Name
+                run: |
+                    echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+                    echo "Tag name from github.ref_name: ${{  github.ref_name }}"
 
             -   name: Build
                 run: go build -ldflags="-s -w -X  main.version=$VERSION" -a -o build/toolbox-$VERSION -v ./main.go
@@ -44,7 +43,7 @@ jobs:
                 run: tar -czvf build/toolbox-$VERSION.tar.gz build/toolbox-$VERSION
 
             -   name: Upload binary as artifact
-                uses: actions/upload-artifact@v2
+                uses: actions/upload-artifact@v3
                 with:
                     name: toolbox-$VERSION
                     path: build/toolbox-$VERSION.tar.gz
