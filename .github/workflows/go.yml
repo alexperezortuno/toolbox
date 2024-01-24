@@ -11,18 +11,31 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            -   uses: actions/checkout@v3
 
-            - name: Set up Go
-              uses: actions/setup-go@v4
-              with:
-                  go-version: '1.21.6'
+            -   name: Set up Go
+                uses: actions/setup-go@v4
+                with:
+                    go-version: '1.21.6'
 
-            - name: Get dependencies
-              run: go get -v -t -d ./...
+            -   name: Get dependencies
+                run: go get -v -t -d ./...
 
-            - name: Build
-              run: go build -v ./...
+            -   name: Build
+                run: |
+                    VERSION=${{ github.run_number }}
+                    go build -ldflags="-X main.version=$VERSION" -o toolbox-$VERSION -v ./...
 
-            - name: Test
-              run: go test -v ./...
+            -   name: Test
+                run: go test -v ./...
+
+            -   name: Archive binary
+                run: |
+                    VERSION=${{ github.run_number }}
+                    tar -czvf toolbox-$VERSION.tar.gz toolbox-$VERSION
+
+            -   name: Upload binary as artifact
+                uses: actions/upload-artifact@v2
+                with:
+                    name: toolbox-${{ github.run_number }}
+                    path: toolbox-${{ github.run_number }}.tar.gz
