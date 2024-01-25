@@ -48,6 +48,8 @@ jobs:
             -   name: List files
                 run: ls -la
 
+            -   run: ls -la $GITHUB_WORKSPACE/dist
+
             -   name: Upload binary as artifact
                 uses: actions/upload-artifact@v3
                 with:
