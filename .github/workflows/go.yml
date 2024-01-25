@@ -34,16 +34,16 @@ jobs:
                     echo "Tag name from github.ref_name: ${{  github.ref_name }}"
 
             -   name: Build
-                run: go build -ldflags="-s -w -X  main.version=$VERSION" -a -o build/toolbox-$VERSION -v ./main.go
+                run: go build -ldflags="-s -w -X  main.version=$VERSION" -a -o ./toolbox-$VERSION -v ./main.go
 
             -   name: Test
                 run: go test -v ./...
 
             -   name: Archive binary
-                run: tar -czvf build/toolbox-$VERSION.tar.gz build/toolbox-$VERSION
+                run: tar -czvf ./toolbox-$VERSION.tar.gz ./toolbox-$VERSION
 
             -   name: Upload binary as artifact
                 uses: actions/upload-artifact@v3
                 with:
                     name: toolbox-$VERSION
-                    path: build/toolbox-$VERSION.tar.gz
+                    path: ./toolbox-$VERSION.tar.gz

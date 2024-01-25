@@ -14,17 +14,17 @@ clean:
 
 .PHONY: build-version
 build-version:
-	go build -a -o ${BUILD_DIR}/${BINARY}-${VERSION} main.go
+	go build -a -o ${BUILD_DIR}/${BINARY}-${VERSION} ./main.go
 
 .PHONY: build-linux
 build-linux:
 	set CGO_ENABLED=0 && \
-	${GOROOT}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${LINUX} main.go
+	${GOROOT}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o ./build/${LINUX} main.go
 
 .PHONY: build-darwin
 build-darwin:
 	set CGO_ENABLED=0 && \
-	${GOROOT}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o build/${DARWIN} main.go
+	${GOROOT}/bin/go build -ldflags "-s -w -X main.Version=${VERSION}" -a -o ./build/${DARWIN} main.go
 
 .PHONY: build-windows
 build-windows:
