@@ -53,4 +53,4 @@ jobs:
                 uses: actions/upload-artifact@v4
                 with:
                     name: toolbox-$VERSION
-                    path: ~/build/artifact/toolbox-$VERSION.tar.gz
+                    path: ~/build/**/*
