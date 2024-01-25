@@ -47,7 +47,7 @@ jobs:
             -   name: List files
                 run: ls -la
 
-            -   run: ls -la ~/build/artifact/build
+            -   run: ls -la ~/build/artifact
 
             -   name: Upload binary as artifact
                 uses: actions/upload-artifact@v4
