@@ -41,12 +41,6 @@ jobs:
             -   name: Test
                 run: go test -v ./...
 
-            -   name: Archive binary
-                run: tar -czvf ~/build/artifact/toolbox-$VERSION.tar.gz ~/build/artifact/toolbox-$VERSION
-
-            -   name: List files
-                run: ls -la
-
             -   run: ls -la ~/build/artifact
 
             -   name: Upload binary as artifact
