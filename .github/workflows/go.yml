@@ -42,8 +42,11 @@ jobs:
             -   name: Archive binary
                 run: tar -czvf ./toolbox-$VERSION.tar.gz ./toolbox-$VERSION
 
+            -   name: List files
+                run: ls -la
+
             -   name: Upload binary as artifact
                 uses: actions/upload-artifact@v3
                 with:
                     name: toolbox-$VERSION
-                    path: toolbox-$VERSION.tar.gz
+                    path: ./toolbox-$VERSION.tar.gz
