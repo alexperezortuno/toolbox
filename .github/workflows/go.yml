@@ -42,7 +42,7 @@ jobs:
                 run: go test -v ./...
 
             -   name: Archive binary
-                run: tar -czvf $GITHUB_WORKSPACE/artifact/build/toolbox-$VERSION.tar.gz $GITHUB_WORKSPACE/build/toolbox-$VERSION
+                run: tar -czvf $GITHUB_WORKSPACE/artifact/build/toolbox-$VERSION.tar.gz $GITHUB_WORKSPACE/artifact/build/toolbox-$VERSION
 
             -   name: List files
                 run: ls -la
