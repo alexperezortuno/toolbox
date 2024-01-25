@@ -46,4 +46,4 @@ jobs:
                 uses: actions/upload-artifact@v3
                 with:
                     name: toolbox-$VERSION
-                    path: ./toolbox-$VERSION.tar.gz
+                    path: toolbox-$VERSION.tar.gz
