@@ -43,6 +43,12 @@ var downloadCmd = &cobra.Command{
 			s = append(s, "-o wget-log -r -l 5 --spider")
 		}
 
+		download, _ := cmd.Flags().GetBool("download")
+		if download {
+			addS := []string{"--mirror", "--convert-links", "--page-requisites", "--no-parent", "-P", "documents/websites/"}
+			s = append(s, addS...)
+		}
+
 		if ftpUser != "" {
 			s = append(s, fmt.Sprintf("--ftp-user=%s", strings.TrimSpace(ftpUser)))
 		}
@@ -93,7 +99,7 @@ func init() {
 	downloadCmd.Flags().Int16VarP(&limit, "limit", "l", 0, "Limit rate")
 	downloadCmd.Flags().StringVarP(&inputPath, "input", "i", "", "Input file")
 	downloadCmd.Flags().Bool("background", false, "Run in background")
-	downloadCmd.Flags().Bool("background", false, "Run in background")
 	downloadCmd.Flags().Bool("continue", false, "Continue")
 	downloadCmd.Flags().Bool("broken", false, "Get broken links")
+	downloadCmd.Flags().Bool("download", false, "Download site")
 }
