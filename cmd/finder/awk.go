@@ -17,7 +17,7 @@ var (
 
 // awkCmd represents the awk command
 var awkCmd = &cobra.Command{
-	Use:   "awk",
+	Use:   "text",
 	Short: "awk command",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {

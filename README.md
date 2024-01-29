@@ -25,5 +25,5 @@ toolbox docker image list
 
 ### finder
 ```shell
-toolbox finder awk -c "cat /etc/passwd" -n 1,2 -d ":" -s "\t"
+toolbox find text -c "cat /etc/passwd" -n 1,2 -d ":" -s "\t"
 ```
