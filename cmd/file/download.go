@@ -53,7 +53,9 @@ var downloadCmd = &cobra.Command{
 
 		if inputPath != "" {
 			s = append(s, fmt.Sprintf("-i %s", strings.TrimSpace(inputPath)))
-		} else {
+		}
+
+		if urlPath != "" {
 			s = append(s, strings.TrimSpace(urlPath))
 		}
 
