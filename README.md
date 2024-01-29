@@ -15,6 +15,15 @@ toolbox net ping -u google.com
 ```
 
 ## Docker
+
+### image
 ```shell
 toolbox docker image list
+```
+
+## File
+
+### finder
+```shell
+toolbox finder awk -c "cat /etc/passwd" -n 1,2 -d ":" -s "\t"
 ```
