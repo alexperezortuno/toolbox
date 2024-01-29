@@ -16,6 +16,7 @@ var (
 	retry      int16
 	ftpUser    string
 	ftpPass    string
+	inputPath  string
 )
 
 // downloadCmd represents the download command
@@ -50,7 +51,11 @@ var downloadCmd = &cobra.Command{
 			s = append(s, fmt.Sprintf("--ftp-password=%s", strings.TrimSpace(ftpPass)))
 		}
 
-		s = append(s, strings.TrimSpace(urlPath))
+		if inputPath != "" {
+			s = append(s, fmt.Sprintf("-i %s", strings.TrimSpace(inputPath)))
+		} else {
+			s = append(s, strings.TrimSpace(urlPath))
+		}
 
 		if outputPath != "" {
 			s = append(s, fmt.Sprintf("-P %s", strings.TrimSpace(outputPath)))
@@ -84,7 +89,8 @@ func init() {
 	downloadCmd.Flags().StringVarP(&ftpUser, "user", "U", "", "FTP user")
 	downloadCmd.Flags().StringVarP(&ftpPass, "pass", "P", "", "FTP password")
 	downloadCmd.Flags().Int16VarP(&limit, "limit", "l", 0, "Limit rate")
-	downloadCmd.Flags().Int16VarP(&retry, "retry", "r", 0, "Retry")
+	downloadCmd.Flags().StringVarP(&inputPath, "input", "i", "", "Input file")
+	downloadCmd.Flags().Bool("background", false, "Run in background")
 	downloadCmd.Flags().Bool("background", false, "Run in background")
 	downloadCmd.Flags().Bool("continue", false, "Continue")
 	downloadCmd.Flags().Bool("broken", false, "Get broken links")
