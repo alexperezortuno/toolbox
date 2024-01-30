@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/alexperezortuno/toolbox/cmd/docker"
 	"github.com/alexperezortuno/toolbox/cmd/file"
-	"github.com/alexperezortuno/toolbox/cmd/finder"
+	"github.com/alexperezortuno/toolbox/cmd/find"
 	"github.com/alexperezortuno/toolbox/cmd/net"
 	"github.com/spf13/cobra"
 	"os"
@@ -37,7 +37,7 @@ func AddSubCommand() {
 	rootCmd.AddCommand(net.NetCmd)
 	rootCmd.AddCommand(docker.DockerCmd)
 	rootCmd.AddCommand(file.FileCmd)
-	rootCmd.AddCommand(finder.FinderCmd)
+	rootCmd.AddCommand(find.FinderCmd)
 }
 
 func init() {

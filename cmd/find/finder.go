@@ -1,4 +1,4 @@
-package finder
+package find
 
 import (
 	"github.com/spf13/cobra"
