@@ -32,3 +32,4 @@ build/*
 go.sum
 .DS_STORE
 report.txt
+documents/websites/*

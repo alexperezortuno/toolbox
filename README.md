@@ -11,10 +11,19 @@ This is a collection of tools that I use in my daily work. I hope you find them 
 Execute a ping command from the toolbox.
 
 ```shell
-toolbox net ping -u google.com
+./build/toolbox net ping -u google.com
 ```
 
 ## Docker
+
+### image
 ```shell
-toolbox docker image list
+./build/toolbox docker image list
+```
+
+## File
+
+### finder
+```shell
+./build/toolbox find text -c "cat /etc/passwd" -n 1,2 -d ":" -s "\t" -f 1
 ```
