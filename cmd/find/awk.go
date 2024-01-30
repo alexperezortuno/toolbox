@@ -56,7 +56,6 @@ var awkCmd = &cobra.Command{
 		}
 
 		s = append(s, fmt.Sprintf("'%s{print %s}'", from, strings.Join(params, sep)))
-		fmt.Printf(common.LineStr, strings.Join(s, " "))
 
 		out, err := common.LaunchCommand([]string{"bash", "-c", strings.Join(s, " ")})
 		if err != nil {
