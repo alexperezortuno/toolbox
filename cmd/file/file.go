@@ -6,13 +6,8 @@ import (
 
 var FileCmd = &cobra.Command{
 	Use:   "file",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Download, compress, and decompress files and directories",
+	Long:  `Tool for file operations such as downloading, compressing, and decompressing files and directories.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		err := cmd.Help()
 		if err != nil {
@@ -23,4 +18,5 @@ to quickly create a Cobra application.`,
 
 func init() {
 	FileCmd.AddCommand(downloadCmd)
+	FileCmd.AddCommand(compressCmd)
 }
